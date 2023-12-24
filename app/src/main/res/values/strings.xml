@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">InfiSecure</string>
     <string name="product_brand">An n22 product</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Skip</string>
 </resources>
