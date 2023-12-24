@@ -13,6 +13,9 @@
         android:theme="@style/Theme.InfiSecure"
         tools:targetApi="31">
         <activity
+            android:name=".IntroFeaturesActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
