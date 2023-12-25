@@ -12,6 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/linearLayout" />
+<com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+    android:id="@+id/worm_dot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:dotsCornerRadius="8dp"
+    app:dotsSize="12dp"
+    app:dotsSpacing="4dp"
+    app:dotsStrokeWidth="2dp"
+    app:dotsColor="@color/bg_primary_dark"
+    android:layout_marginTop="5dp"
+    android:layout_below="@+id/viewPager"
+    android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -27,6 +39,7 @@
             android:id="@+id/btnSkip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/bg_primary_dark"
             android:text="@string/skip" />
 
     </LinearLayout>
