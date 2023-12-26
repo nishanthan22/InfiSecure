@@ -2,4 +2,20 @@
     <string name="app_name">InfiSecure</string>
     <string name="product_brand">An n22 product</string>
     <string name="skip">Skip</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register">Register</string>
+    <string name="sign_out">Sign out</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+
+
+    <string name="facebook_app_id">1780146719116136</string>
+    <string name="fb_login_protocol_scheme">fb1780146719116136</string>
+    <string name="facebook_client_token">e6ed75b5ce28f3776075c0466bebccef</string>
+
+    <string name="default_web_client_id">820876139292-noho9bt0bsgobk9uo8vofdcasrcqjd8e.apps.googleusercontent.com</string>
+
 </resources>

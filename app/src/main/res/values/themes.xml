@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.InfiSecure" parent="Base.Theme.InfiSecure" />
+    <style name="Theme.InfiSecure.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.InfiSecure.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.InfiSecure.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
