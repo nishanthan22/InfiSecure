@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,8 +28,8 @@ import com.n22.infisecure.constants.AppConstants;
 
 public class UserSignUpActivity extends AppCompatActivity {
 
-    Button fbButton;
-
+    Button fbButton, registerButton;
+    EditText name, emailId, mobileNumber, password;
     private FirebaseAuth mAuth;
 
     private CallbackManager mCallbackManager;
@@ -38,6 +39,11 @@ public class UserSignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_sign_up);
         mCallbackManager = CallbackManager.Factory.create();
         LoginButton fbButton = findViewById(R.id.fb_login_button);
+        registerButton = findViewById(R.id.btnRegister);
+        name = findViewById(R.id.inpName);
+        emailId = findViewById(R.id.inpEmail);
+        mobileNumber = findViewById(R.id.inpMobileNumber);
+        password = findViewById(R.id.inpPassword);
          mAuth = FirebaseAuth.getInstance();
         handleFacebookSignUpProcess(fbButton);
 

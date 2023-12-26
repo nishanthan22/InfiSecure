@@ -93,16 +93,20 @@
 
         <!-- Widgets on the right /user interaction -->
         <EditText
-            android:inputType="textPersonName"
+            android:id="@+id/inpName"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tvName"
             android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="50dp"
             android:layout_toEndOf="@+id/tvName"
-            android:hint="@string/name" />
+            android:hint="@string/name"
+            android:inputType="textPersonName" />
 
         <EditText
-
+            android:id="@+id/inpEmail"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tvEmail"
@@ -112,6 +116,7 @@
             android:hint="@string/email" />
 
         <EditText
+            android:id="@+id/inpPassword"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tvPassword"
@@ -121,6 +126,7 @@
             android:hint="@string/password" />
 
         <EditText
+            android:id="@+id/inpMobileNumber"
             android:inputType="phone"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
