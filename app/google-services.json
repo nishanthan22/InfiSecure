@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "814381357094",
+    "project_id": "infi-65e00",
+    "storage_bucket": "infi-65e00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814381357094:android:f5aa41f793bef9bce86ee7",
+        "android_client_info": {
+          "package_name": "com.n22.infisecure"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXIm362qHNwcBKdEvhoMdKH_l12MLLX1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
