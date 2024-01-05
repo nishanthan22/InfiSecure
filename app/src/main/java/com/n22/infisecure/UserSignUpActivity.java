@@ -3,7 +3,10 @@ package com.n22.infisecure;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,13 +29,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.n22.infisecure.constants.AppConstants;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
+
 public class UserSignUpActivity extends AppCompatActivity {
 
+    public HashMap<String, String> userDetails = new HashMap<>();
     Button fbButton, registerButton;
     EditText name, emailId, mobileNumber, password;
+    String sName, sEmail, sPassword, sMobileNumber;
     private FirebaseAuth mAuth;
-
     private CallbackManager mCallbackManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +53,96 @@ public class UserSignUpActivity extends AppCompatActivity {
         emailId = findViewById(R.id.inpEmail);
         mobileNumber = findViewById(R.id.inpMobileNumber);
         password = findViewById(R.id.inpPassword);
-         mAuth = FirebaseAuth.getInstance();
+        password.setVisibility(View.INVISIBLE);
+        mAuth = FirebaseAuth.getInstance();
         handleFacebookSignUpProcess(fbButton);
 
+        //NAME
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                sName = s.toString();
+
+                password.setVisibility(View.VISIBLE);
+            }
+        });
+        //EMAIL
+        emailId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                sEmail = s.toString();
+
+            }
+        });
+        //MOBILE NUMBER
+        mobileNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                sMobileNumber = s.toString();
+
+            }
+        });
+        //PASSWORD
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                sPassword = s.toString();
+
+            }
+        });
+        if (isValidCredentials()) {
+
+            userDetails.put(AppConstants.NAME, sName);
+            userDetails.put(AppConstants.EMAIL, sEmail);
+            userDetails.put(AppConstants.PHONE_NUMBER, sMobileNumber);
+            userDetails.put(AppConstants.PASSWORD, sPassword);
+            Toast.makeText(UserSignUpActivity.this, "SUCCESS", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private boolean isValidCredentials() {
+        return !StringUtils.isAllBlank(sName, sEmail, sPassword, sMobileNumber);
     }
 
     private void handleFacebookSignUpProcess(LoginButton fbButton) {
@@ -78,9 +174,10 @@ public class UserSignUpActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null)
+        if (currentUser != null)
             updateUI(currentUser);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -115,12 +212,26 @@ public class UserSignUpActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private void updateUI(FirebaseUser user) {
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUri =user.getPhotoUrl();
-            String phoneNumber = user.getPhoneNumber();
-        Toast.makeText(UserSignUpActivity.this, name + "\n"+ email+ "\n"+ phoneNumber+ "\n"+ photoUri,
-                Toast.LENGTH_LONG).show();
+        String name = user.getDisplayName();
+        String email = user.getEmail();
+        Uri photoUri = user.getPhotoUrl();
+        String phoneNumber = user.getPhoneNumber();
+        if (name != null && !name.isEmpty() && email != null && !email.isEmpty()) {
+            Toast.makeText(UserSignUpActivity.this, "Signed in as " + name,
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(UserSignUpActivity.this, "Unable to get user details",
+                    Toast.LENGTH_LONG).show();
+            Log.e(AppConstants.FACEBOOK, AppConstants.NAME.toUpperCase() + ": " + name + ", " + AppConstants.EMAIL.toUpperCase() + ": " + email);
+        }
+        Log.i(AppConstants.FACEBOOK, AppConstants.PHOTO_URL.toUpperCase() + ": " + photoUri + ", " + AppConstants.PHONE_NUMBER.toUpperCase() + ": " + phoneNumber);
+
+        moveToHomePage();
+    }
+
+    private void moveToHomePage() {
+        //add intent to home page
     }
 }

@@ -9,4 +9,8 @@ public class AppConstants {
     public static final String FACEBOOK = "FACEBOOK";
     public static final String GOOGLE_AUTH = "GOOGLE_AUTH";
 
+    public static final String NAME = "name";
+    public static final String PHOTO_URL = "photo_url";
+    public static final String PHONE_NUMBER = "phone_number";
+    public static final String PASSWORD = "password";
 }
